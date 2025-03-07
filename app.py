@@ -82,7 +82,10 @@ nutrition_data = pd.DataFrame({
 
 # 사이드바
 st.sidebar.title("걷기와 노화 예방")
-st.sidebar.image("https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80", use_column_width=True)
+st.sidebar.image(
+    "https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    use_column_width=True
+)
 
 # 네비게이션
 page = st.sidebar.radio(
@@ -112,7 +115,7 @@ if page == "개요":
     st.title("걷기와 노화 예방 대시보드")
     
     st.markdown("""
-    <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;'>
+    <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;color:#000;'>
     걷기는 단순한 신체활동이 아닌 노화를 늦추고 건강수명을 연장하는 가장 쉽고 효과적인 방법입니다.
     </div>
     """, unsafe_allow_html=True)
@@ -135,7 +138,7 @@ if page == "개요":
         
         for insight in insights:
             st.markdown(f"""
-            <div style='background-color:{insight["color"]};padding:0.8em;border-radius:5px;margin-bottom:10px;'>
+            <div style='background-color:{insight["color"]};padding:0.8em;border-radius:5px;margin-bottom:10px;color:#000;'>
             {insight["text"]}
             </div>
             """, unsafe_allow_html=True)
@@ -163,33 +166,33 @@ if page == "개요":
     
     with effects_col1:
         st.markdown("""
-        <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;'>
+        <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;color:#000;'>
         <h3 style='color:#1565C0;font-size:1.2em'>근육 건강</h3>
-        <p style='font-size:0.9em'>하반신 근육 강화를 통한 균형감각 향상 및 낙상 위험 감소</p>
+        <p style='font-size:0.9em;'>하반신 근육 강화를 통한 균형감각 향상 및 낙상 위험 감소</p>
         </div>
         """, unsafe_allow_html=True)
     
     with effects_col2:
         st.markdown("""
-        <div style='background-color:#E8F5E9;padding:1em;border-radius:10px;'>
+        <div style='background-color:#E8F5E9;padding:1em;border-radius:10px;color:#000;'>
         <h3 style='color:#2E7D32;font-size:1.2em'>뇌 건강</h3>
-        <p style='font-size:0.9em'>마이오카인 생성을 통한 치매, 알츠하이머 위험 감소</p>
+        <p style='font-size:0.9em;'>마이오카인 생성을 통한 치매, 알츠하이머 위험 감소</p>
         </div>
         """, unsafe_allow_html=True)
     
     with effects_col3:
         st.markdown("""
-        <div style='background-color:#F3E5F5;padding:1em;border-radius:10px;'>
+        <div style='background-color:#F3E5F5;padding:1em;border-radius:10px;color:#000;'>
         <h3 style='color:#7B1FA2;font-size:1.2em'>혈관 건강</h3>
-        <p style='font-size:0.9em'>모세혈관 소실 방지 및 혈압, 혈당 조절 개선</p>
+        <p style='font-size:0.9em;'>모세혈관 소실 방지 및 혈압, 혈당 조절 개선</p>
         </div>
         """, unsafe_allow_html=True)
     
     with effects_col4:
         st.markdown("""
-        <div style='background-color:#FFF8E1;padding:1em;border-radius:10px;'>
+        <div style='background-color:#FFF8E1;padding:1em;border-radius:10px;color:#000;'>
         <h3 style='color:#F57F17;font-size:1.2em'>정신 건강</h3>
-        <p style='font-size:0.9em'>우울증 예방 및 스트레스 감소 효과</p>
+        <p style='font-size:0.9em;'>우울증 예방 및 스트레스 감소 효과</p>
         </div>
         """, unsafe_allow_html=True)
     
@@ -198,7 +201,7 @@ if page == "개요":
     st.subheader("노화 상태 체크")
     
     st.markdown("""
-    <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;'>
+    <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;color:#000;'>
     <h3 style='color:#1565C0;font-size:1.2em'>눈 뜨고 한 발 서기 테스트</h3>
     <p>65세 평균: <strong>50초</strong></p>
     </div>
@@ -208,7 +211,7 @@ if page == "개요":
     
     with test_col1:
         st.markdown("""
-        <ol style='color:#424242;'>
+        <ol style='color:#000;'>
           <li>한쪽 발을 들어 올린 상태에서 균형을 유지합니다</li>
           <li>눈을 뜬 채로 최대한 오래 버팁니다</li>
           <li>균형을 잃는 순간 시간을 기록합니다</li>
@@ -230,7 +233,7 @@ elif page == "걷기 효과":
     st.title("걷기의 건강상 효과")
     
     st.markdown("""
-    <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;'>
+    <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;color:#000;'>
     규칙적인 걷기는 다양한 질환의 위험을 감소시키고 건강 수명을 연장하는 데 도움이 됩니다.
     </div>
     """, unsafe_allow_html=True)
@@ -280,7 +283,7 @@ elif page == "걷기 효과":
         st.subheader("마이오카인의 건강 효과")
         
         st.markdown("""
-        <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;margin-bottom:1em;'>
+        <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;margin-bottom:1em;color:#000;'>
         <h3 style='color:#1565C0;font-size:1.2em'>마이오카인이란?</h3>
         <p>근육 운동 시 근육에서 분비되는 물질로, 다양한 건강상 이점을 제공합니다.</p>
         </div>
@@ -290,31 +293,31 @@ elif page == "걷기 효과":
         
         with effects_col1:
             st.markdown("""
-            <div style='border:1px solid #BBDEFB;padding:0.8em;border-radius:5px;margin-bottom:10px;'>
+            <div style='border:1px solid #BBDEFB;padding:0.8em;border-radius:5px;margin-bottom:10px;color:#000;'>
             <h4 style='color:#1565C0;font-size:1em;margin-bottom:0.3em;'>뇌 건강</h4>
-            <p style='font-size:0.8em;color:#424242;'>치매, 알츠하이머병 위험 감소</p>
+            <p style='font-size:0.8em;'>치매, 알츠하이머병 위험 감소</p>
             </div>
             """, unsafe_allow_html=True)
             
             st.markdown("""
-            <div style='border:1px solid #BBDEFB;padding:0.8em;border-radius:5px;margin-bottom:10px;'>
+            <div style='border:1px solid #BBDEFB;padding:0.8em;border-radius:5px;margin-bottom:10px;color:#000;'>
             <h4 style='color:#1565C0;font-size:1em;margin-bottom:0.3em;'>심혈관 건강</h4>
-            <p style='font-size:0.8em;color:#424242;'>심혈관 질환 및 뇌졸중 위험 감소</p>
+            <p style='font-size:0.8em;'>심혈관 질환 및 뇌졸중 위험 감소</p>
             </div>
             """, unsafe_allow_html=True)
         
         with effects_col2:
             st.markdown("""
-            <div style='border:1px solid #BBDEFB;padding:0.8em;border-radius:5px;margin-bottom:10px;'>
+            <div style='border:1px solid #BBDEFB;padding:0.8em;border-radius:5px;margin-bottom:10px;color:#000;'>
             <h4 style='color:#1565C0;font-size:1em;margin-bottom:0.3em;'>정신 건강</h4>
-            <p style='font-size:0.8em;color:#424242;'>우울증 예방 및 스트레스 감소</p>
+            <p style='font-size:0.8em;'>우울증 예방 및 스트레스 감소</p>
             </div>
             """, unsafe_allow_html=True)
             
             st.markdown("""
-            <div style='border:1px solid #BBDEFB;padding:0.8em;border-radius:5px;margin-bottom:10px;'>
+            <div style='border:1px solid #BBDEFB;padding:0.8em;border-radius:5px;margin-bottom:10px;color:#000;'>
             <h4 style='color:#1565C0;font-size:1em;margin-bottom:0.3em;'>대사 건강</h4>
-            <p style='font-size:0.8em;color:#424242;'>인슐린 감수성 향상 및 혈당 조절</p>
+            <p style='font-size:0.8em;'>인슐린 감수성 향상 및 혈당 조절</p>
             </div>
             """, unsafe_allow_html=True)
     
@@ -322,7 +325,7 @@ elif page == "걷기 효과":
         st.subheader("시간대별 걷기 효과")
         
         st.markdown("""
-        <div style='background-color:#FFF8E1;padding:1em;border-radius:10px;margin-bottom:1em;'>
+        <div style='background-color:#FFF8E1;padding:1em;border-radius:10px;margin-bottom:1em;color:#000;'>
         <p>연구 결과에 따르면 <strong>16~18시에 걷는 것</strong>이 혈당조절과 심혈관건강에 가장 효과적입니다.</p>
         </div>
         """, unsafe_allow_html=True)
@@ -345,7 +348,7 @@ elif page == "걷기 방법":
     st.title("다양한 걷기 방법")
     
     st.markdown("""
-    <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;'>
+    <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;color:#000;'>
     목적과 체력에 맞는 걷기 방법을 선택하여 실천해보세요.
     </div>
     """, unsafe_allow_html=True)
@@ -417,10 +420,10 @@ elif page == "걷기 방법":
     
     with check_col1:
         st.markdown("""
-        <div style='background-color:#E3F2FD;padding:1.2em;border-radius:10px;height:100%;'>
+        <div style='background-color:#E3F2FD;padding:1.2em;border-radius:10px;height:100%;color:#000;'>
         <h3 style='color:#1565C0;font-size:1.2em'>눈 뜨고 한 발 서기 테스트</h3>
         <p>65세 평균: <strong>50초</strong></p>
-        <ol>
+        <ol style='color:#000;'>
           <li>한쪽 발을 들어 올린 상태에서 균형을 유지합니다</li>
           <li>눈을 뜬 채로 최대한 오래 버팁니다</li>
           <li>균형을 잃는 순간 시간을 기록합니다</li>
@@ -443,7 +446,7 @@ elif page == "생활 지침":
     st.title("일상 생활 속 걷기 지침")
     
     st.markdown("""
-    <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;'>
+    <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;color:#000;'>
     걷기를 일상 생활에 자연스럽게 통합하는 방법을 알아보세요.
     </div>
     """, unsafe_allow_html=True)
@@ -458,7 +461,7 @@ elif page == "생활 지침":
         
         for i, row in lifestyle_guidelines.iterrows():
             st.markdown(f"""
-            <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;margin-bottom:1em;'>
+            <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;margin-bottom:1em;color:#000;'>
             <h3 style='color:#1565C0;font-size:1.2em'>{row['시간대']}</h3>
             <p>{row['내용']}</p>
             </div>
@@ -471,14 +474,14 @@ elif page == "생활 지침":
         
         for i, row in nutrition_data.iterrows():
             st.markdown(f"""
-            <div style='border:1px solid #BBDEFB;padding:0.8em;border-radius:5px;margin-bottom:0.8em;'>
+            <div style='border:1px solid #BBDEFB;padding:0.8em;border-radius:5px;margin-bottom:0.8em;color:#000;'>
             <h4 style='color:#1565C0;font-size:1em;margin-bottom:0.3em;'>{row['영양소']}</h4>
-            <p style='font-size:0.9em;color:#424242;'>{row['효과']}</p>
+            <p style='font-size:0.9em;'>{row['효과']}</p>
             </div>
             """, unsafe_allow_html=True)
         
         st.markdown("""
-        <div style='background-color:#FFF8E1;padding:1em;border-radius:10px;margin-top:1em;'>
+        <div style='background-color:#FFF8E1;padding:1em;border-radius:10px;margin-top:1em;color:#000;'>
         <h3 style='color:#F57F17;font-size:1.2em'>걷기 좋은 시간대</h3>
         <p>연구결과에 따르면 16~18시에 걷는 것이 혈당조절과 심혈관건강에 더 효과적입니다.</p>
         </div>
@@ -492,9 +495,9 @@ elif page == "생활 지침":
     
     with check_col1:
         st.markdown("""
-        <div style='background-color:#E3F2FD;padding:1.2em;border-radius:10px;height:100%;'>
+        <div style='background-color:#E3F2FD;padding:1.2em;border-radius:10px;height:100%;color:#000;'>
         <h3 style='color:#1565C0;font-size:1.2em'>걷기 전</h3>
-        <ul style='padding-left:1.5em;'>
+        <ul style='padding-left:1.5em;color:#000;'>
           <li>혈압 체크하기</li>
           <li>식후 1시간이 지난 후 걷기</li>
           <li>적절한 신발과 의복 준비</li>
@@ -506,9 +509,9 @@ elif page == "생활 지침":
     
     with check_col2:
         st.markdown("""
-        <div style='background-color:#E8F5E9;padding:1.2em;border-radius:10px;height:100%;'>
+        <div style='background-color:#E8F5E9;padding:1.2em;border-radius:10px;height:100%;color:#000;'>
         <h3 style='color:#2E7D32;font-size:1.2em'>걷기 후</h3>
-        <ul style='padding-left:1.5em;'>
+        <ul style='padding-left:1.5em;color:#000;'>
           <li>채소 섭취하기</li>
           <li>가벼운 스트레칭</li>
           <li>수분 보충하기</li>
