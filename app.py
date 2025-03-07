@@ -504,14 +504,16 @@ elif page == "생활 지침":
     with col1:
         st.markdown(header_style("일일 생활 지침", 2), unsafe_allow_html=True)
         
-        for i, guideline in lifestyle_guidelines.
-st.markdown(header_style("일일 생활 지침", 2), unsafe_allow_html=True)
+        for i, row in lifestyle_guidelines.iterrows():
+            st.
+with col1:
+        st.markdown(header_style("일일 생활 지침", 2), unsafe_allow_html=True)
         
-        for i, guideline in lifestyle_guidelines.iterrows():
+        for i, row in lifestyle_guidelines.iterrows():
             st.markdown(f"""
             <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;margin-bottom:1em;'>
-            <h3 style='color:#1565C0;font-size:1.2em'>{guideline['시간대']}</h3>
-            <p>{guideline['내용']}</p>
+            <h3 style='color:#1565C0;font-size:1.2em'>{row['시간대']}</h3>
+            <p>{row['내용']}</p>
             </div>
             """, unsafe_allow_html=True)
     
@@ -520,11 +522,11 @@ st.markdown(header_style("일일 생활 지침", 2), unsafe_allow_html=True)
         
         st.markdown("걷기 운동의 효과를 높이기 위해 다음 영양소를 함께 섭취하는 것이 좋습니다:")
         
-        for i, nutrition in nutrition_data.iterrows():
+        for i, row in nutrition_data.iterrows():
             st.markdown(f"""
             <div style='border:1px solid #BBDEFB;padding:0.8em;border-radius:5px;margin-bottom:0.8em;'>
-            <h4 style='color:#1565C0;font-size:1em;margin-bottom:0.3em;'>{nutrition['영양소']}</h4>
-            <p style='font-size:0.9em;color:#424242;'>{nutrition['효과']}</p>
+            <h4 style='color:#1565C0;font-size:1em;margin-bottom:0.3em;'>{row['영양소']}</h4>
+            <p style='font-size:0.9em;color:#424242;'>{row['효과']}</p>
             </div>
             """, unsafe_allow_html=True)
         
