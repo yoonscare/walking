@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
-import matplotlib.pyplot as plt
 
 # 페이지 설정
 st.set_page_config(
@@ -14,95 +13,72 @@ st.set_page_config(
 )
 
 # 데이터 준비
-@st.cache_data
-def load_data():
-    # 건강수명 데이터
-    life_expectancy_data = pd.DataFrame({
-        "국가": ["한국", "일본", "스웨덴", "영국", "미국"],
-        "건강수명": [65.8, 74.1, 72.0, 71.4, 68.5],
-        "기대수명": [82.7, 84.2, 82.4, 81.2, 78.9]
-    })
-    
-    # 걷기 효과 데이터
-    walking_benefits_data = pd.DataFrame({
-        "질환": ["심혈관질환", "치매", "당뇨병", "우울증", "뇌졸중"],
-        "위험감소율(%)": [30, 25, 20, 15, 10]
-    })
-    
-    # 연령대별 권장 걷기 시간 데이터
-    age_walking_time_data = pd.DataFrame({
-        "연령대": ["30대", "40대", "50대", "60대", "70대 이상"],
-        "권장시간(분)": [30, 35, 40, 45, 30]
-    })
-    
-    # 시간대별 걷기 효과 데이터
-    time_effect_data = pd.DataFrame({
-        "시간대": ["아침(6-8시)", "오전(9-11시)", "점심(12-14시)", "오후(16-18시)", "저녁(19-21시)"],
-        "혈당조절효과": [60, 65, 70, 85, 75],
-        "심혈관건강효과": [70, 75, 65, 90, 80]
-    })
-    
-    # 걷기 방법 데이터
-    walking_methods = pd.DataFrame({
-        "방법": ["싱글벙글 걷기", "파워 워킹", "노르딕 워킹"],
-        "설명": [
-            "대화가 가능한 강도로 걷는 방법으로, 스트레스 감소와 일상 건강 유지에 효과적입니다.",
-            "최대심박수의 60~75%로 걷는 방법으로, 심폐지구력과 근력 강화에 효과적입니다.",
-            "스틱을 활용하여 상체까지 함께 운동하는 방법으로, 전신 근력 강화와 칼로리 소모에 효과적입니다."
-        ],
-        "실천방법": [
-            "자연스러운 속도로 걸으며 대화가 가능할 정도의 강도를 유지합니다. 천천히 시작해서 30분 이상 지속하는 것이 좋습니다.",
-            "팔을 적극적으로 흔들며 보폭을 넓게 하고 속도를 높여 걷습니다. 심박수가 최대심박수의 60~75% 수준을 유지하도록 합니다.",
-            "전용 스틱을 사용하여 스키 동작과 유사하게 팔과 다리를 함께 움직입니다. 스틱을 뒤로 밀며 상체 근육을 적극적으로 사용합니다."
-        ],
-        "심폐지구력": [60, 85, 80],
-        "근력강화": [40, 70, 90],
-        "스트레스감소": [90, 60, 65],
-        "혈당조절": [50, 75, 80]
-    })
-    
-    # 생활 지침 데이터
-    lifestyle_guidelines = pd.DataFrame({
-        "시간대": ["아침 루틴", "식사 관리", "오후 활동", "저녁 루틴"],
-        "내용": [
-            "아침에 일어나서 10분 스트레칭 후 20분 걷기를 실천하세요. 혈액순환과 신진대사를 촉진합니다.",
-            "식사 후 1시간이 지난 후 10-15분 가벼운 산책을 하면 혈당 조절에 효과적입니다.",
-            "오후 4-6시에 30분 이상 걷기 운동을 하면 혈당 조절과 심혈관 건강에 가장 효과적입니다.",
-            "저녁 식사 후 TV 시청 대신 15-20분 동네 한 바퀴 산책하고, 잠들기 1시간 전 가벼운 스트레칭으로 마무리하세요."
-        ]
-    })
-    
-    # 영양소 데이터
-    nutrition_data = pd.DataFrame({
-        "영양소": ["필발", "시나몬", "사차인치", "콜라겐펩타이드"],
-        "효과": [
-            "항산화 작용, 혈관 기능 개선",
-            "항염증 작용, 혈당 조절",
-            "오메가-3 지방산, 항염증 작용",
-            "관절 건강, 근육 회복"
-        ]
-    })
-    
-    return (
-        life_expectancy_data, 
-        walking_benefits_data, 
-        age_walking_time_data, 
-        time_effect_data, 
-        walking_methods,
-        lifestyle_guidelines,
-        nutrition_data
-    )
+# 건강수명 데이터
+life_expectancy_data = pd.DataFrame({
+    "국가": ["한국", "일본", "스웨덴", "영국", "미국"],
+    "건강수명": [65.8, 74.1, 72.0, 71.4, 68.5],
+    "기대수명": [82.7, 84.2, 82.4, 81.2, 78.9]
+})
 
-# 데이터 로드
-(
-    life_expectancy_data, 
-    walking_benefits_data, 
-    age_walking_time_data, 
-    time_effect_data, 
-    walking_methods,
-    lifestyle_guidelines,
-    nutrition_data
-) = load_data()
+# 걷기 효과 데이터
+walking_benefits_data = pd.DataFrame({
+    "질환": ["심혈관질환", "치매", "당뇨병", "우울증", "뇌졸중"],
+    "위험감소율(%)": [30, 25, 20, 15, 10]
+})
+
+# 연령대별 권장 걷기 시간 데이터
+age_walking_time_data = pd.DataFrame({
+    "연령대": ["30대", "40대", "50대", "60대", "70대 이상"],
+    "권장시간(분)": [30, 35, 40, 45, 30]
+})
+
+# 시간대별 걷기 효과 데이터
+time_effect_data = pd.DataFrame({
+    "시간대": ["아침(6-8시)", "오전(9-11시)", "점심(12-14시)", "오후(16-18시)", "저녁(19-21시)"],
+    "혈당조절효과": [60, 65, 70, 85, 75],
+    "심혈관건강효과": [70, 75, 65, 90, 80]
+})
+
+# 걷기 방법 데이터
+walking_methods = pd.DataFrame({
+    "방법": ["싱글벙글 걷기", "파워 워킹", "노르딕 워킹"],
+    "설명": [
+        "대화가 가능한 강도로 걷는 방법으로, 스트레스 감소와 일상 건강 유지에 효과적입니다.",
+        "최대심박수의 60~75%로 걷는 방법으로, 심폐지구력과 근력 강화에 효과적입니다.",
+        "스틱을 활용하여 상체까지 함께 운동하는 방법으로, 전신 근력 강화와 칼로리 소모에 효과적입니다."
+    ],
+    "실천방법": [
+        "자연스러운 속도로 걸으며 대화가 가능할 정도의 강도를 유지합니다. 천천히 시작해서 30분 이상 지속하는 것이 좋습니다.",
+        "팔을 적극적으로 흔들며 보폭을 넓게 하고 속도를 높여 걷습니다. 심박수가 최대심박수의 60~75% 수준을 유지하도록 합니다.",
+        "전용 스틱을 사용하여 스키 동작과 유사하게 팔과 다리를 함께 움직입니다. 스틱을 뒤로 밀며 상체 근육을 적극적으로 사용합니다."
+    ],
+    "심폐지구력": [60, 85, 80],
+    "근력강화": [40, 70, 90],
+    "스트레스감소": [90, 60, 65],
+    "혈당조절": [50, 75, 80]
+})
+
+# 생활 지침 데이터
+lifestyle_guidelines = pd.DataFrame({
+    "시간대": ["아침 루틴", "식사 관리", "오후 활동", "저녁 루틴"],
+    "내용": [
+        "아침에 일어나서 10분 스트레칭 후 20분 걷기를 실천하세요. 혈액순환과 신진대사를 촉진합니다.",
+        "식사 후 1시간이 지난 후 10-15분 가벼운 산책을 하면 혈당 조절에 효과적입니다.",
+        "오후 4-6시에 30분 이상 걷기 운동을 하면 혈당 조절과 심혈관 건강에 가장 효과적입니다.",
+        "저녁 식사 후 TV 시청 대신 15-20분 동네 한 바퀴 산책하고, 잠들기 1시간 전 가벼운 스트레칭으로 마무리하세요."
+    ]
+})
+
+# 영양소 데이터
+nutrition_data = pd.DataFrame({
+    "영양소": ["필발", "시나몬", "사차인치", "콜라겐펩타이드"],
+    "효과": [
+        "항산화 작용, 혈관 기능 개선",
+        "항염증 작용, 혈당 조절",
+        "오메가-3 지방산, 항염증 작용",
+        "관절 건강, 근육 회복"
+    ]
+})
 
 # 사이드바
 st.sidebar.title("걷기와 노화 예방")
@@ -121,15 +97,6 @@ st.sidebar.markdown("""
 **출처**: 이가세 미치야 지음, "걷기가 노화 속도를 결정한다", 빚은책들
 """)
 
-# 헤더 스타일 함수
-def header_style(text, level=1):
-    if level == 1:
-        return f"<h1 style='color:#1E88E5;'>{text}</h1>"
-    elif level == 2:
-        return f"<h2 style='color:#0D47A1;font-size:1.5em'>{text}</h2>"
-    elif level == 3:
-        return f"<h3 style='color:#1565C0;font-size:1.2em'>{text}</h3>"
-
 # 컬러 팔레트
 colors = {
     "primary": "#1E88E5",
@@ -142,7 +109,7 @@ colors = {
 
 # 개요 페이지
 if page == "개요":
-    st.markdown(header_style("걷기와 노화 예방 대시보드"), unsafe_allow_html=True)
+    st.title("걷기와 노화 예방 대시보드")
     
     st.markdown("""
     <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;'>
@@ -156,7 +123,7 @@ if page == "개요":
     col1, col2 = st.columns([1, 1])
     
     with col1:
-        st.markdown(header_style("주요 인사이트", 2), unsafe_allow_html=True)
+        st.subheader("주요 인사이트")
         
         insights = [
             {"text": "한국의 건강수명은 <strong>65.8년</strong>으로 기대수명보다 <strong>16.9년</strong> 짧음", "color": "#E3F2FD"},
@@ -174,7 +141,7 @@ if page == "개요":
             """, unsafe_allow_html=True)
     
     with col2:
-        st.markdown(header_style("건강수명 vs 기대수명", 2), unsafe_allow_html=True)
+        st.subheader("건강수명 vs 기대수명")
         
         # 바 차트: 건강수명 vs 기대수명
         fig = px.bar(
@@ -186,21 +153,17 @@ if page == "개요":
             labels={"value": "연수", "variable": "구분"},
             title="국가별 건강수명과 기대수명 비교"
         )
-        fig.update_layout(
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-            margin=dict(l=20, r=20, t=40, b=20),
-            height=350
-        )
+        fig.update_layout(height=350)
         st.plotly_chart(fig, use_container_width=True)
     
     # 걷기 효과 요약
-    st.markdown(header_style("걷기의 주요 효과", 2), unsafe_allow_html=True)
+    st.subheader("걷기의 주요 효과")
     
     effects_col1, effects_col2, effects_col3, effects_col4 = st.columns(4)
     
     with effects_col1:
         st.markdown("""
-        <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;height:150px;'>
+        <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;'>
         <h3 style='color:#1565C0;font-size:1.2em'>근육 건강</h3>
         <p style='font-size:0.9em'>하반신 근육 강화를 통한 균형감각 향상 및 낙상 위험 감소</p>
         </div>
@@ -208,7 +171,7 @@ if page == "개요":
     
     with effects_col2:
         st.markdown("""
-        <div style='background-color:#E8F5E9;padding:1em;border-radius:10px;height:150px;'>
+        <div style='background-color:#E8F5E9;padding:1em;border-radius:10px;'>
         <h3 style='color:#2E7D32;font-size:1.2em'>뇌 건강</h3>
         <p style='font-size:0.9em'>마이오카인 생성을 통한 치매, 알츠하이머 위험 감소</p>
         </div>
@@ -216,7 +179,7 @@ if page == "개요":
     
     with effects_col3:
         st.markdown("""
-        <div style='background-color:#F3E5F5;padding:1em;border-radius:10px;height:150px;'>
+        <div style='background-color:#F3E5F5;padding:1em;border-radius:10px;'>
         <h3 style='color:#7B1FA2;font-size:1.2em'>혈관 건강</h3>
         <p style='font-size:0.9em'>모세혈관 소실 방지 및 혈압, 혈당 조절 개선</p>
         </div>
@@ -224,7 +187,7 @@ if page == "개요":
     
     with effects_col4:
         st.markdown("""
-        <div style='background-color:#FFF8E1;padding:1em;border-radius:10px;height:150px;'>
+        <div style='background-color:#FFF8E1;padding:1em;border-radius:10px;'>
         <h3 style='color:#F57F17;font-size:1.2em'>정신 건강</h3>
         <p style='font-size:0.9em'>우울증 예방 및 스트레스 감소 효과</p>
         </div>
@@ -232,7 +195,7 @@ if page == "개요":
     
     # 노화 상태 체크
     st.markdown("---")
-    st.markdown(header_style("노화 상태 체크", 2), unsafe_allow_html=True)
+    st.subheader("노화 상태 체크")
     
     st.markdown("""
     <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;'>
@@ -264,7 +227,7 @@ if page == "개요":
 
 # 걷기 효과 페이지
 elif page == "걷기 효과":
-    st.markdown(header_style("걷기의 건강상 효과"), unsafe_allow_html=True)
+    st.title("걷기의 건강상 효과")
     
     st.markdown("""
     <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;'>
@@ -278,7 +241,7 @@ elif page == "걷기 효과":
     col1, col2 = st.columns(2)
     
     with col1:
-        st.markdown(header_style("질환별 위험 감소율", 2), unsafe_allow_html=True)
+        st.subheader("질환별 위험 감소율")
         
         fig = px.pie(
             walking_benefits_data,
@@ -289,15 +252,11 @@ elif page == "걷기 효과":
             title="걷기를 통한 질환별 위험 감소율 (%)"
         )
         fig.update_traces(textposition='inside', textinfo='percent+label')
-        fig.update_layout(
-            legend=dict(orientation="h", yanchor="bottom", y=-0.2, xanchor="center", x=0.5),
-            margin=dict(l=20, r=20, t=40, b=20),
-            height=400
-        )
+        fig.update_layout(height=400)
         st.plotly_chart(fig, use_container_width=True)
     
     with col2:
-        st.markdown(header_style("연령대별 권장 걷기 시간", 2), unsafe_allow_html=True)
+        st.subheader("연령대별 권장 걷기 시간")
         
         fig = px.bar(
             age_walking_time_data,
@@ -310,7 +269,6 @@ elif page == "걷기 효과":
         )
         fig.update_layout(
             coloraxis_showscale=False,
-            margin=dict(l=20, r=20, t=40, b=20),
             height=400
         )
         st.plotly_chart(fig, use_container_width=True)
@@ -319,7 +277,7 @@ elif page == "걷기 효과":
     col3, col4 = st.columns(2)
     
     with col3:
-        st.markdown(header_style("마이오카인의 건강 효과", 2), unsafe_allow_html=True)
+        st.subheader("마이오카인의 건강 효과")
         
         st.markdown("""
         <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;margin-bottom:1em;'>
@@ -361,7 +319,7 @@ elif page == "걷기 효과":
             """, unsafe_allow_html=True)
     
     with col4:
-        st.markdown(header_style("시간대별 걷기 효과", 2), unsafe_allow_html=True)
+        st.subheader("시간대별 걷기 효과")
         
         st.markdown("""
         <div style='background-color:#FFF8E1;padding:1em;border-radius:10px;margin-bottom:1em;'>
@@ -379,16 +337,12 @@ elif page == "걷기 효과":
             labels={"value": "효과 점수", "variable": "효과 유형"},
             title="시간대별 걷기 효과 비교"
         )
-        fig.update_layout(
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-            margin=dict(l=20, r=20, t=40, b=20),
-            height=300
-        )
+        fig.update_layout(height=300)
         st.plotly_chart(fig, use_container_width=True)
 
 # 걷기 방법 페이지
 elif page == "걷기 방법":
-    st.markdown(header_style("다양한 걷기 방법"), unsafe_allow_html=True)
+    st.title("다양한 걷기 방법")
     
     st.markdown("""
     <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;'>
@@ -399,7 +353,7 @@ elif page == "걷기 방법":
     st.markdown("---")
     
     # 방법별 레이더 차트
-    st.markdown(header_style("걷기 종류별 효과 비교", 2), unsafe_allow_html=True)
+    st.subheader("걷기 종류별 효과 비교")
     
     # 레이더 차트용 데이터 준비
     categories = ['심폐지구력', '근력강화', '스트레스감소', '혈당조절']
@@ -422,14 +376,13 @@ elif page == "걷기 방법":
             )
         ),
         showlegend=True,
-        legend=dict(orientation="h", yanchor="bottom", y=-0.1, xanchor="center", x=0.5),
         height=500
     )
     
     st.plotly_chart(fig, use_container_width=True)
     
     # 방법별 상세 설명
-    st.markdown(header_style("방법별 상세 설명", 2), unsafe_allow_html=True)
+    st.subheader("방법별 상세 설명")
     
     for i, method in walking_methods.iterrows():
         with st.expander(f"{method['방법']}", expanded=i==0):
@@ -458,7 +411,7 @@ elif page == "걷기 방법":
     
     # 노화 상태 체크
     st.markdown("---")
-    st.markdown(header_style("노화 상태 체크", 2), unsafe_allow_html=True)
+    st.subheader("노화 상태 체크")
     
     check_col1, check_col2 = st.columns([2, 1])
     
@@ -487,7 +440,7 @@ elif page == "걷기 방법":
 
 # 생활 지침 페이지
 elif page == "생활 지침":
-    st.markdown(header_style("일상 생활 속 걷기 지침"), unsafe_allow_html=True)
+    st.title("일상 생활 속 걷기 지침")
     
     st.markdown("""
     <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;'>
@@ -501,48 +454,51 @@ elif page == "생활 지침":
     col1, col2 = st.columns(2)
     
     with col1:
-        st.markdown(header_style("일일 생활 지침", 2), unsafe_allow_html=True)
+        st.subheader("일일 생활 지침")
         
         for i, row in lifestyle_guidelines.iterrows():
-for i, row in lifestyle_guidelines.iterrows():
-            guideline_html = f"""
+            st.markdown(f"""
             <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;margin-bottom:1em;'>
             <h3 style='color:#1565C0;font-size:1.2em'>{row['시간대']}</h3>
             <p>{row['내용']}</p>
             </div>
-            """
-            st.markdown(guideline_html, unsafe_allow_html=True)
+            """, unsafe_allow_html=True)
     
     with col2:
-        st.markdown(header_style("도움이 되는 영양소", 2), unsafe_allow_html=True)
+        st.subheader("도움이 되는 영양소")
         
         st.markdown("걷기 운동의 효과를 높이기 위해 다음 영양소를 함께 섭취하는 것이 좋습니다:")
         
         for i, row in nutrition_data.iterrows():
-            nutrition_html = f"""
+            st.markdown(f"""
             <div style='border:1px solid #BBDEFB;padding:0.8em;border-radius:5px;margin-bottom:0.8em;'>
             <h4 style='color:#1565C0;font-size:1em;margin-bottom:0.3em;'>{row['영양소']}</h4>
             <p style='font-size:0.9em;color:#424242;'>{row['효과']}</p>
             </div>
-            """
-            st.markdown(nutrition_html, unsafe_allow_html=True)
+            """, unsafe_allow_html=True)
         
-        time_html = """
+        st.markdown("""
         <div style='background-color:#FFF8E1;padding:1em;border-radius:10px;margin-top:1em;'>
         <h3 style='color:#F57F17;font-size:1.2em'>걷기 좋은 시간대</h3>
         <p>연구결과에 따르면 16~18시에 걷는 것이 혈당조절과 심혈관건강에 더 효과적입니다.</p>
         </div>
-        """
-        st.markdown(time_html, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
     
     # 걷기 전후 체크리스트
     st.markdown("---")
-    st.markdown(header_style("걷기 전후 체크리스트", 2), unsafe_allow_html=True)
+    st.subheader("걷기 전후 체크리스트")
     
     check_col1, check_col2 = st.columns(2)
     
     with check_col1:
-        before_html = """
+        st.markdown("""
+        <div style='background-color:#E3F2FD;padding:1.2em;border-radius:10px;height:100%;'>
+        <h3 style='color:#1565C0;font-size:1.2em'>걷기 전</h3>
+        <ul style='padding-left:1.5em;'>
+          <li>혈압 체크하기</li>
+          <li>식후 1시간이 지난 후 걷기</li>
+          <li>적절한
+st.markdown("""
         <div style='background-color:#E3F2FD;padding:1.2em;border-radius:10px;height:100%;'>
         <h3 style='color:#1565C0;font-size:1.2em'>걷기 전</h3>
         <ul style='padding-left:1.5em;'>
@@ -553,11 +509,10 @@ for i, row in lifestyle_guidelines.iterrows():
           <li>스트레칭으로 몸 풀기</li>
         </ul>
         </div>
-        """
-        st.markdown(before_html, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
     
     with check_col2:
-        after_html = """
+        st.markdown("""
         <div style='background-color:#E8F5E9;padding:1.2em;border-radius:10px;height:100%;'>
         <h3 style='color:#2E7D32;font-size:1.2em'>걷기 후</h3>
         <ul style='padding-left:1.5em;'>
@@ -568,5 +523,4 @@ for i, row in lifestyle_guidelines.iterrows():
           <li>충분한 휴식 취하기</li>
         </ul>
         </div>
-        """
-        st.markdown(after_html, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
