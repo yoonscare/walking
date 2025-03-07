@@ -505,11 +505,8 @@ elif page == "생활 지침":
         st.markdown(header_style("일일 생활 지침", 2), unsafe_allow_html=True)
         
         for i, row in lifestyle_guidelines.iterrows():
-            st.
-with col1:
-        st.markdown(header_style("일일 생활 지침", 2), unsafe_allow_html=True)
-        
-        for i, row in lifestyle_guidelines.iterrows():
+            st.markdown(f"""
+for i, row in lifestyle_guidelines.iterrows():
             st.markdown(f"""
             <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;margin-bottom:1em;'>
             <h3 style='color:#1565C0;font-size:1.2em'>{row['시간대']}</h3>
