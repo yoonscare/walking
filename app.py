@@ -417,7 +417,7 @@ elif page == "걷기 방법":
     
     with check_col1:
         st.markdown("""
-        <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;'>
+        <div style='background-color:#E3F2FD;padding:1.2em;border-radius:10px;height:100%;'>
         <h3 style='color:#1565C0;font-size:1.2em'>눈 뜨고 한 발 서기 테스트</h3>
         <p>65세 평균: <strong>50초</strong></p>
         <ol>
@@ -492,13 +492,6 @@ elif page == "생활 지침":
     
     with check_col1:
         st.markdown("""
-        <div style='background-color:#E3F2FD;padding:1.2em;border-radius:10px;height:100%;'>
-        <h3 style='color:#1565C0;font-size:1.2em'>걷기 전</h3>
-        <ul style='padding-left:1.5em;'>
-          <li>혈압 체크하기</li>
-          <li>식후 1시간이 지난 후 걷기</li>
-          <li>적절한
-st.markdown("""
         <div style='background-color:#E3F2FD;padding:1.2em;border-radius:10px;height:100%;'>
         <h3 style='color:#1565C0;font-size:1.2em'>걷기 전</h3>
         <ul style='padding-left:1.5em;'>
