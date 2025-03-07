@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
-from PIL import Image
 import matplotlib.pyplot as plt
 
 # 페이지 설정
@@ -505,14 +504,14 @@ elif page == "생활 지침":
         st.markdown(header_style("일일 생활 지침", 2), unsafe_allow_html=True)
         
         for i, row in lifestyle_guidelines.iterrows():
-            st.markdown(f"""
 for i, row in lifestyle_guidelines.iterrows():
-            st.markdown(f"""
+            guideline_html = f"""
             <div style='background-color:#E3F2FD;padding:1em;border-radius:10px;margin-bottom:1em;'>
             <h3 style='color:#1565C0;font-size:1.2em'>{row['시간대']}</h3>
             <p>{row['내용']}</p>
             </div>
-            """, unsafe_allow_html=True)
+            """
+            st.markdown(guideline_html, unsafe_allow_html=True)
     
     with col2:
         st.markdown(header_style("도움이 되는 영양소", 2), unsafe_allow_html=True)
@@ -520,19 +519,21 @@ for i, row in lifestyle_guidelines.iterrows():
         st.markdown("걷기 운동의 효과를 높이기 위해 다음 영양소를 함께 섭취하는 것이 좋습니다:")
         
         for i, row in nutrition_data.iterrows():
-            st.markdown(f"""
+            nutrition_html = f"""
             <div style='border:1px solid #BBDEFB;padding:0.8em;border-radius:5px;margin-bottom:0.8em;'>
             <h4 style='color:#1565C0;font-size:1em;margin-bottom:0.3em;'>{row['영양소']}</h4>
             <p style='font-size:0.9em;color:#424242;'>{row['효과']}</p>
             </div>
-            """, unsafe_allow_html=True)
+            """
+            st.markdown(nutrition_html, unsafe_allow_html=True)
         
-        st.markdown("""
+        time_html = """
         <div style='background-color:#FFF8E1;padding:1em;border-radius:10px;margin-top:1em;'>
         <h3 style='color:#F57F17;font-size:1.2em'>걷기 좋은 시간대</h3>
         <p>연구결과에 따르면 16~18시에 걷는 것이 혈당조절과 심혈관건강에 더 효과적입니다.</p>
         </div>
-        """, unsafe_allow_html=True)
+        """
+        st.markdown(time_html, unsafe_allow_html=True)
     
     # 걷기 전후 체크리스트
     st.markdown("---")
@@ -541,7 +542,7 @@ for i, row in lifestyle_guidelines.iterrows():
     check_col1, check_col2 = st.columns(2)
     
     with check_col1:
-        st.markdown("""
+        before_html = """
         <div style='background-color:#E3F2FD;padding:1.2em;border-radius:10px;height:100%;'>
         <h3 style='color:#1565C0;font-size:1.2em'>걷기 전</h3>
         <ul style='padding-left:1.5em;'>
@@ -552,10 +553,11 @@ for i, row in lifestyle_guidelines.iterrows():
           <li>스트레칭으로 몸 풀기</li>
         </ul>
         </div>
-        """, unsafe_allow_html=True)
+        """
+        st.markdown(before_html, unsafe_allow_html=True)
     
     with check_col2:
-        st.markdown("""
+        after_html = """
         <div style='background-color:#E8F5E9;padding:1.2em;border-radius:10px;height:100%;'>
         <h3 style='color:#2E7D32;font-size:1.2em'>걷기 후</h3>
         <ul style='padding-left:1.5em;'>
@@ -566,4 +568,5 @@ for i, row in lifestyle_guidelines.iterrows():
           <li>충분한 휴식 취하기</li>
         </ul>
         </div>
-        """, unsafe_allow_html=True)
+        """
+        st.markdown(after_html, unsafe_allow_html=True)
